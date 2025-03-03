@@ -10,6 +10,7 @@ from FlaskBlueprintTemplateApp import utils
 from FlaskBlueprintTemplateApp.extensions import (
     os,
     request,
+    jsonify
 )
 
 #: Importing our API Blueprint
@@ -26,4 +27,4 @@ def index():
     Returns:
     str: A simple message indicating the main page.
     """
-    return utils.return_success("Main page")
+    return jsonify("Main page")
