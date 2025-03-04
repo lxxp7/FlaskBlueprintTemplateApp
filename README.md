@@ -1,8 +1,6 @@
 # Service Template
 This project aims to be a boilerplate for an asyncrhonous service with a REST API in front-end. It is based on Flask.
 
-[[_TOC_]]
-
 ## Features
 - Front-End API using Flask
 - API versionning (using Flask's blueprint)
