@@ -4,27 +4,36 @@ Extensions registry.
 All extensions here are used as singletons and initialized in
 application factory.
 """
-import os
-import subprocess
-import logging
-import socket
-import uuid
-import json
+import urllib
 import requests
-import time
-import tempfile
-import shutil
+import re
+import logging
+import ast
 
 from flask import (
     Flask,
     Blueprint,
-    jsonify,
-    render_template,
-    url_for,
-    current_app,
     request,
+    current_app,
+    render_template,
+    jsonify,
     flash,
 )
 
-from datetime import datetime, timedelta
-from urllib.parse import unquote
+from wtforms import (
+    StringField,
+    PasswordField,
+    SubmitField
+)
+
+from wtforms.validators import (
+    DataRequired,
+    Email,
+    EqualTo,
+    Length,
+    ValidationError,
+    IPAddress
+)
+
+from flask_wtf import FlaskForm
+
