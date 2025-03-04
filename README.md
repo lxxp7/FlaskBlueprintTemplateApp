@@ -20,16 +20,20 @@ This project aims to be a boilerplate for an asyncrhonous service with a REST AP
 
 ## Installation
 1. Clone the repo
-2. (optional) search "service_name" and replace by the name of your service (Folders, Filename, in code).
-3. Install a virtual environement to install dependencies
+2. Open the api and the frontend in separate windows or use different terminals and use
+```bash
+cd PathToApi/Front
+```
+3. (optional) replace the template names by the name of your services (Folders, Filename, in code).
+4. Install a virtual environement to install dependencies
 ```bash
  python -m venv venv
 ```
-4. Start the virtual environement
+5. Start the virtual environement
 ```bash
 .\venv\Scripts\activate
 ```
-5. Install required dependencies if the requirements file exists
+6. Install required dependencies if the requirements file exists
 ```bash
 pip install -r requirements.txt
 ```
