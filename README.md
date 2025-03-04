@@ -40,12 +40,12 @@ pip freeze > requirements.txt
 
 
 ## Usage
-### Without docker-compose
-1. Open a  terminal to run Flask's dev server
+## Developement
+1. Open a  terminal to run Flask's server
 ```bash
-flask run
+flask run -p "PORT"
 ```
-or when in developement
+or when needed in developement
 ```bash
-flask run --debug
+flask run --debug -p "PORT"
 ```
