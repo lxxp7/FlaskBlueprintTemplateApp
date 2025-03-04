@@ -5,7 +5,7 @@ This is a placeholder/example of routes/views for our api blueprint.
 All our Views comes here or could be seperated into several files
 
 """
-from FlaskBlueprintTemplateFrontend.extensions import (
+from FlaskBlueprintTemplateFrontend.utils.extensions import (
     Blueprint,
     render_template
 )

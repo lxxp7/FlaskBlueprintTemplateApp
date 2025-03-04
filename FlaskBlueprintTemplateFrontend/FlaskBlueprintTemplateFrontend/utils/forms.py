@@ -1,4 +1,4 @@
-from FlaskBlueprintTemplateFrontend.extensions import(
+from FlaskBlueprintTemplateFrontend.utils.extensions import(
     FlaskForm,
     StringField,
     PasswordField,
