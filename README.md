@@ -27,7 +27,7 @@ This project aims to be a boilerplate for an asyncrhonous service with a REST AP
 ```
 4. Start the virtual environement
 ```bash
-source venv/bin/activate
+.venv/bin/activate
 ```
 5. Install required dependencies if the requirements file exists
 ```bash
