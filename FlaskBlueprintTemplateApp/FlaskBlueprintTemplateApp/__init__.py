@@ -56,6 +56,9 @@ def create_app(config_filename=None, testing=False):
     #: being at blueprints/__init__.py
     register_blueprints(app)
 
+    # import db
+    # db.init_app(app)
+
     # Root route for the main page
     @app.route('/')
     def home():
