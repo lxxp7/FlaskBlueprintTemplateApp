@@ -37,22 +37,6 @@ def settings():
         settings = None
         return jsonify(settings)
     else:
-        update_settings(request)
+        utils.update_settings(request)
 
 
-def update_settings(request):
-    """
-    Updates the application settings based on JSON data received in the request.
-
-    Returns:
-        dict: A success response if settings are updated, or an error response if a
-        required parameter is missing.
-    """
-    data:dict = request.get_json()  # This gets the JSON data from the body of the request
-    for setting_name, value in data.items():
-        if value is None:
-            return utils.return_error(f"Missing parameter for {setting_name}")
-        else:
-            current_app.config.update(
-                {setting_name : value}
-            )

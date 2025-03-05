@@ -1,5 +1,6 @@
 from FlaskBlueprintTemplateApp.utils.extensions import (
-    jsonify
+    jsonify,
+    current_app,
 )
 
 def return_data(data):
@@ -44,3 +45,21 @@ def return_error(message, code=400):
     return jsonify(
         {"error" : message}
     ), code
+
+
+def update_settings(request):
+    """
+    Updates the application settings based on JSON data received in the request.
+
+    Returns:
+        dict: A success response if settings are updated, or an error response if a
+        required parameter is missing.
+    """
+    data:dict = request.get_json()  # This gets the JSON data from the body of the request
+    for setting_name, value in data.items():
+        if value is None:
+            return return_error(f"Missing parameter for {setting_name}")
+        else:
+            current_app.config.update(
+                {setting_name : value}
+            )
