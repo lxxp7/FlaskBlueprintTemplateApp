@@ -1,55 +1,61 @@
 # Service Template
-This project aims to be a boilerplate for an asyncrhonous service with a REST API in front-end. It is based on Flask.
+
+This project is a boilerplate for an asynchronous service with a REST API in front-end, based on Flask.
 
 ## Features
 - Front-End API using Flask
-- API versionning (using Flask's blueprint)
-- Runs without any extra configuration
-- Flask best practice
-- Developpment/Production environement
-- Scalable
-- Ready to deploy
+- API versioning (using Flask Blueprint)
+- Runs without extra configuration
+- Flask best practices
+- Development/Production environments
+- Scalable and ready to deploy
 
-
-## Requirements
-> Checkout requirements.txt for more details
-
-- Flask
-- Python (3 or 2.7)
-
+## Prerequisites
+- Python 3.x (compatible with 2.7 but 3.x recommended)
+- pip (Python package manager)
+- Virtualenv (optional but recommended)
 
 ## Installation
-1. Clone the repo
-2. Open the api and the frontend in separate windows or use different terminals and use
+1. Clone the repository
+```bash
+git clone <REPO_URL>
+cd <PROJECT_NAME>
+```
+2. Open two separate terminals, one for the API and one for the frontend, or use different tabs:
 ```bash
 cd PathToApi/Front
 ```
-3. (optional) replace the template names by the name of your services (Folders, Filename, in code).
-4. Install a virtual environement to install dependencies
+3. (Optional) Replace template names with your service names (folders, filenames, code).
+4. Create a virtual environment to manage dependencies:
 ```bash
- python -m venv venv
+python -m venv venv
 ```
-5. Start the virtual environement
-```bash
-.\venv\Scripts\activate
-```
-6. Install required dependencies if the requirements file exists
+5. Activate the virtual environment:
+   - Windows:
+   ```bash
+   .\venv\Scripts\activate
+   ```
+   - macOS/Linux:
+   ```bash
+   source venv/bin/activate
+   ```
+6. Install required dependencies if a `requirements.txt` file is present:
 ```bash
 pip install -r requirements.txt
 ```
-Else you might later want to write the necessary dependencies for the app
+If `requirements.txt` does not exist, you can save the installed dependencies:
 ```bash
 pip freeze > requirements.txt
 ```
 
-
 ## Usage
-## Developement
-1. Open a  terminal to run Flask's server
+### Development Mode
+1. Open a terminal to run the Flask server:
 ```bash
-flask run -p "PORT"
+flask run -p <PORT>
 ```
-or when needed in developement
+2. To enable debug mode during development:
 ```bash
-flask run --debug -p "PORT"
+flask run --debug -p <PORT>
 ```
+
