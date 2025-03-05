@@ -13,7 +13,7 @@ from FlaskBlueprintTemplateFrontend.utils.extensions import Blueprint
 #:
 #: Blueprint's name must be unique. Consider using the path to the module to
 #: avoid name clashing
-api = Blueprint('api_1_0', __name__)
+routes_bp = Blueprint('routes_1_0', __name__)
 
 #: Import all submodule of this API
 #:
