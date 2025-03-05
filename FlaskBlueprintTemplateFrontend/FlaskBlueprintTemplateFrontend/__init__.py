@@ -53,8 +53,8 @@ def create_app(config_filename=None, testing=False):
     #:
     #: Every Blueprints to load must be added to the following function
     #: being at blueprints/__init__.py
-    from FlaskBlueprintTemplateFrontend.routes import register_routes
-    register_routes(app)
+    from FlaskBlueprintTemplateFrontend.routes import register_blueprints
+    register_blueprints(app)
 
     # Root route for the main page
     @app.route('/')

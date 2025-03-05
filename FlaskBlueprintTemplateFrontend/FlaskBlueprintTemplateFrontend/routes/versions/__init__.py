@@ -7,7 +7,7 @@ submodule.
 This will be register into the Flask Application via the register_blueprint().
 You have to add your new blueprint in register_blueprint for Flask to load it.
 """
-from FlaskBlueprintTemplateApp.utils.extensions import Blueprint
+from FlaskBlueprintTemplateFrontend.utils.extensions import Blueprint
 
 #: Initialize Blueprint
 #:
@@ -23,5 +23,5 @@ api = Blueprint('api_1_0', __name__)
 #:
 #: we use '# noqa: F401' so flake8 doesn't do a warning for the import not
 #: being at the top of this file.
-from . import base  # noqa: F401
+from .routes_1_0 import routes  # noqa: F401
 

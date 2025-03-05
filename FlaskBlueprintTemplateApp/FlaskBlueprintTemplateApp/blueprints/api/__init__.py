@@ -7,7 +7,7 @@ submodule.
 This will be register into the Flask Application via the register_blueprint().
 You have to add your new blueprint in register_blueprint for Flask to load it.
 """
-from FlaskBlueprintTemplateApp.extensions import Blueprint
+from FlaskBlueprintTemplateApp.utils.extensions import Blueprint
 
 #: Initialize Blueprint
 #:

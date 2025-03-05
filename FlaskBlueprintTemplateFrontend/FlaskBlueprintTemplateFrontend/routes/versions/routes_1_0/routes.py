@@ -10,6 +10,7 @@ from FlaskBlueprintTemplateFrontend.utils.extensions import (
     render_template
 )
 
+from FlaskBlueprintTemplateFrontend.routes.versions.routes_1_0 import routes
 routes_bp = Blueprint('routes', __name__)  # Define the blueprint
 
 @routes_bp.route('/')

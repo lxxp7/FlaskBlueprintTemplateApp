@@ -7,7 +7,7 @@ All our Views comes here or could be seperated into several files
 """
 from FlaskBlueprintTemplateApp import utils
 
-from FlaskBlueprintTemplateApp.extensions import (
+from FlaskBlueprintTemplateApp.utils.extensions import (
     os,
     request,
     jsonify

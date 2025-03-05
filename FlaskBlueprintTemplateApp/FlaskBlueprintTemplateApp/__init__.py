@@ -6,7 +6,7 @@ This file contains both function to initialized Flask and Celery App.
 You shouldn't have to change those functions except for advance functionality.
 
 """
-from FlaskBlueprintTemplateApp.extensions import Flask
+from FlaskBlueprintTemplateApp.utils.extensions import Flask
 from FlaskBlueprintTemplateApp.blueprints import register_blueprints
 
 def create_app(config_filename=None, testing=False):
