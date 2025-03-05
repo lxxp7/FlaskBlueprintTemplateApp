@@ -59,5 +59,5 @@ def create_app(config_filename=None, testing=False):
     # Root route for the main page
     @app.route('/')
     def home():
-        return "Welcome to the Nightcrawler API! Use the url with '/api/version/route' ex : /api/1.0/"
+        return "Welcome to the Nightcrawler API! Use the url with '/routes/<VERSION>/<ENDPOINT>' ex : /routes/1.0/"
     return app
