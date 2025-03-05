@@ -12,7 +12,7 @@ from FlaskBlueprintTemplateFrontend.utils.extensions import (
 
 from FlaskBlueprintTemplateFrontend.routes.versions.routes_1_0 import routes_bp
 
-@routes_bp.route('/')
+@routes_bp.route('/home')
 def home():
     """
     Renders the home page.

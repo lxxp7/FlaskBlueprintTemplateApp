@@ -56,8 +56,10 @@ def create_app(config_filename=None, testing=False):
     from FlaskBlueprintTemplateFrontend.routes import register_blueprints
     register_blueprints(app)
 
+    from FlaskBlueprintTemplateFrontend.routes.versions.routes_1_0.routes import home
     # Root route for the main page
     @app.route('/')
-    def home():
-        return "Welcome to the Nightcrawler API! Use the url with '/routes/<VERSION>/<ENDPOINT>' ex : /routes/1.0/"
+    def index():
+        return home()
+
     return app
