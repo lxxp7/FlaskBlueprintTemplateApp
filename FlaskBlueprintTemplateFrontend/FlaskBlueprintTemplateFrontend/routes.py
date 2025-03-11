@@ -10,7 +10,7 @@ from FlaskBlueprintTemplateFrontend.utils.extensions import (
     render_template
 )
 
-from FlaskBlueprintTemplateFrontend.routes.versions.routes_1_0 import routes_bp
+routes_bp = Blueprint('routes_1_0', __name__)
 
 @routes_bp.route('/home')
 def home():

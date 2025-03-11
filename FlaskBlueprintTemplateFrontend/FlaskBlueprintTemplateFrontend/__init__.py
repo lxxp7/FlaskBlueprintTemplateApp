@@ -48,15 +48,7 @@ def create_app(config_filename=None, testing=False):
     if testing is True:
         app.config["TESTING"] = True
 
-
-    #: Register Blueprints
-    #:
-    #: Every Blueprints to load must be added to the following function
-    #: being at blueprints/__init__.py
-    from FlaskBlueprintTemplateFrontend.routes import register_blueprints
-    register_blueprints(app)
-
-    from FlaskBlueprintTemplateFrontend.routes.versions.routes_1_0.routes import home
+    from FlaskBlueprintTemplateFrontend.routes import home
     # Root route for the main page
     @app.route('/')
     def index():
