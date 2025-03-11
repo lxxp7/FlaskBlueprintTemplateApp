@@ -85,6 +85,11 @@ cur.execute("INSERT INTO posts (title, content) VALUES (?, ?)",
 connection.commit()
 connection.close()
 ```
+
+Then run :
+```bash
+python init_db.py
+```
 It will create a database named database.db and create your tables as well as inserting some values.
 
 ## Usage
