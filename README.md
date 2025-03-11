@@ -48,6 +48,45 @@ If `requirements.txt` does not exist, you can save the installed dependencies:
 pip freeze > requirements.txt
 ```
 
+## Setup SQLite Database
+To use a simple database in your project, you can easily setup a SQLite database using Python
+
+To create one, create a new file named "schema.sql" and write sql code to create the tables you need, in our example it will be 
+```bash
+DROP TABLE IF EXISTS posts;
+
+CREATE TABLE posts (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    title TEXT NOT NULL,
+    content TEXT NOT NULL
+);
+```
+
+Now create another file named "init_db.py" and write
+```bash
+import sqlite3
+
+connection = sqlite3.connect('database.db')
+
+with open('schema.sql') as f:
+    connection.executescript(f.read())
+
+cur = connection.cursor()
+
+cur.execute("INSERT INTO posts (title, content) VALUES (?, ?)",
+            ('First Post', 'Content for the first post')
+            )
+
+cur.execute("INSERT INTO posts (title, content) VALUES (?, ?)",
+            ('Second Post', 'Content for the second post')
+            )
+
+connection.commit()
+connection.close()
+```
+It will create a database named database.db and create your tables as well as inserting some values.
+
 ## Usage
 ### Development Mode
 1. Open a terminal to run the Flask server:
