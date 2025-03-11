@@ -8,6 +8,7 @@ You shouldn't have to change those functions except for advance functionality.
 """
 from FlaskBlueprintTemplateApp.utils.extensions import Flask
 from FlaskBlueprintTemplateApp.blueprints import register_blueprints
+from FlaskBlueprintTemplateApp.utils.extensions import os, db
 
 def create_app(config_filename=None, testing=False):
     """
@@ -31,6 +32,12 @@ def create_app(config_filename=None, testing=False):
     #: Instanciate a Flask App with the name of the service
     app = Flask(__name__)
 
+    # Chemin absolu vers le répertoire de base de l'application
+    basedir = os.path.abspath(os.path.dirname(__file__))
+
+    # Configuration de l'URI de la base de données SQLite
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'database.db')
+
     #: Load Flask Configuration
     #:
     #: By Default the application will load `config/settings.py`.
@@ -48,6 +55,12 @@ def create_app(config_filename=None, testing=False):
     #: extensions can also use the flag to make testing them easier.
     if testing is True:
         app.config["TESTING"] = True
+
+    db.init_app(app)
+
+    from FlaskBlueprintTemplateApp import models
+    with app.app_context():
+        db.create_all()  # Assurez-vous que cet appel est dans le contexte de l'application
 
 
     #: Register Blueprints

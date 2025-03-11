@@ -10,6 +10,8 @@ CORS(
     }
 )
 
+import sqlite3
+from flask import g
 
 if __name__ == '__main__':
     app.run(debug=False)
