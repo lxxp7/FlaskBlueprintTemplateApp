@@ -58,7 +58,7 @@ def create_app(config_filename=None, testing=False):
 
     db.init_app(app)
 
-    from FlaskBlueprintTemplateApp import models
+    import FlaskBlueprintTemplateApp.models
     with app.app_context():
         db.create_all()  # Assurez-vous que cet appel est dans le contexte de l'application
 

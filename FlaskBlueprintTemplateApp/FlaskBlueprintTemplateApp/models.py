@@ -1,11 +1,12 @@
 from FlaskBlueprintTemplateApp.utils.extensions import db
 
-class posts_test2(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(150))
-    content = db.Column(db.Text)
-    
-class posts_test3(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(150))
-    content = db.Column(db.Text)
+class Projects(db.Model):
+    __tablename__ = 'projects'
+    project_name = db.Column(db.String(256), primary_key=True, nullable=False)
+    excluded = db.Column(db.Boolean, default=False)
+
+    def to_dict(self): # to get a json format
+        return {
+            "project_name": self.project_name,
+            "excluded": self.excluded,
+        }

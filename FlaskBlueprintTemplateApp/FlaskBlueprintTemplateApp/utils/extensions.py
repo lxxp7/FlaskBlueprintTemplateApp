@@ -25,6 +25,7 @@ from flask import (
     request,
     flash,
 )
+
 from flask_sqlalchemy import SQLAlchemy
 
 from datetime import datetime, timedelta
