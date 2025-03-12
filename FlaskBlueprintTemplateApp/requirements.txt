@@ -11,6 +11,7 @@ exceptiongroup==1.2.2
 Flask==3.1.0
 Flask-Cors==5.0.0
 flask-redis==0.4.0
+Flask-SQLAlchemy==3.1.1
 greenlet==3.1.1
 h11==0.14.0
 idna==3.10
@@ -22,6 +23,7 @@ jsonschema==4.23.0
 jsonschema-specifications==2024.10.1
 MarkupSafe==3.0.2
 mistune==3.1.2
+optional-django==0.1.0
 p4python==2024.2.2682690
 packaging==24.2
 pluggy==1.5.0
@@ -30,13 +32,12 @@ python-dotenv==1.0.1
 python-engineio==4.11.2
 python-socketio==5.12.1
 PyYAML==6.0.2
-redis==5.2.1
 referencing==0.36.2
 requests==2.32.3
 rpds-py==0.23.0
 simple-websocket==1.1.0
 six==1.17.0
-SQLAlchemy==2.0.37
+SQLAlchemy==2.0.39
 tomli==2.2.1
 typing_extensions==4.12.2
 urllib3==2.3.0
