@@ -5,6 +5,7 @@ This is a placeholder/example of routes/views for our api blueprint.
 All our Views comes here or could be seperated into several files
 
 """
+from FlaskBlueprintTemplateFrontend.utils import forms
 from FlaskBlueprintTemplateFrontend.utils.utils import *
 from FlaskBlueprintTemplateFrontend.utils.extensions import (
     Blueprint,
@@ -26,10 +27,10 @@ def home():
 
 @routes_bp.route("/get_projects", methods=['GET'])
 def get_projects():
-    print('f')
     return send_request('get_projects', "GET", {})
 
 
 @routes_bp.route("/insert_project")
 def insert_project():
-   return True
+    form = forms.ProjectForm()
+    return render_template("projects_form.html", form=form)
