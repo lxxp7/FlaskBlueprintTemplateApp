@@ -81,7 +81,6 @@ def check_pk_bfr_insert(**kwargs):
     return True  # No duplicate
 
 
-
 @api.route('/get_pr_pk', methods=["GET"])
 def get_pr_pk():
     pks = [pk.name for pk in models.Projects.__table__.primary_key]

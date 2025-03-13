@@ -11,22 +11,14 @@ from FlaskBlueprintTemplateFrontend.routes import routes_bp
 
 def create_app(config_filename=None, testing=False):
     """
-    Create Flask App.
+    Create and configure the Flask application.
 
-    Flask Application Factory Pattern. Creating the Flask App in a function
-    makes instancing of the app possible for testing or multi-configuration.
-    create_app() is recognized by the `flask run` command.
+    Parameters:
+    - config_filename (str): The configuration file to load.
+    If None,  defaults to 'config/settings-dev.py'.
 
-    documentation :
-    https://flask.palletsprojects.com/en/1.1.x/patterns/appfactories/#basic-factories
-
-    :param config_filename: path to the config file name. If None, default
-                            `config/settings.py` is loaded
-    :type config_filename: str
-    :param testing: unittest mode
-    :type testing: bool
-    :return: Flask App object
-    :rtype: Flask
+    Returns:
+    - app (Flask): The configured Flask application instance.
     """
     #: Instanciate a Flask App with the name of the service
     app = Flask(__name__)
@@ -39,7 +31,7 @@ def create_app(config_filename=None, testing=False):
     if config_filename:
         app.config.from_pyfile(config_filename)
     else:
-        app.config.from_object('FlaskBlueprintTemplateFrontend.config.settings')
+        app.config.from_pyfile('config/settings-dev.py')
 
     #: Testing mode
     #:
@@ -48,10 +40,9 @@ def create_app(config_filename=None, testing=False):
     if testing is True:
         app.config["TESTING"] = True
 
-    from FlaskBlueprintTemplateFrontend.routes import home
-    # Root route for the main page
-    @app.route('/')
-    def index():
-        return home()
+    # Register routes
+
+    from  FlaskBlueprintTemplateFrontend.routes import register_routes
+    register_routes(app)
 
     return app
