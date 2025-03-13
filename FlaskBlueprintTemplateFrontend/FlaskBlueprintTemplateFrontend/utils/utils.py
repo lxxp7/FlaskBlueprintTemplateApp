@@ -56,7 +56,6 @@ def send_request(route: str, method: str, params: dict={}):
     """
     base_api_url = get_base_api_url()
     request_path = base_api_url + route
-    print(request_path)
     if method is not None:
         final_method = method.upper()
     else:

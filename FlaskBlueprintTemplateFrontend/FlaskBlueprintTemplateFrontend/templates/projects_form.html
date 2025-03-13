@@ -3,7 +3,7 @@
 {% block title %}Projects page{% endblock %}
 {% block content %}
 <div class="container mt-5">
-    <form method="POST" action="{{ url_for('routes.insert_project') }}">
+    <form method="POST" action="{{ url_for('routes.insert_project') }}" >
         {{ form.hidden_tag() }}
         <fieldset>
             <div class="mb-3">
@@ -13,12 +13,10 @@
                     <div class="invalid-feedback">{{ error }}</div>
                 {% endfor %}
             </div>
-            <div class="mb-3">
-                {{ form.EXCLUDED.label(class="form-label") }}
-                {{ form.EXCLUDED(class="form-control {% if form.EXCLUDED.errors %}is-invalid{% endif %}") }}
-                {% for error in form.EXCLUDED.errors %}
-                    <div class="invalid-feedback">{{ error }}</div>
-                {% endfor %}
+            <!-- Checkbox -->
+            <div class="mb-3 form-check">
+                {{ form.EXCLUDED(class="form-check-input", type="checkbox") }}
+                {{ form.EXCLUDED.label(class="form-check-label") }}
             </div>
         </fieldset>
         <div class="d-grid">

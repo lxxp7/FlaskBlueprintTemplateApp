@@ -30,7 +30,17 @@ def get_projects():
     return send_request('get_projects', "GET", {})
 
 
-@routes_bp.route("/insert_project")
+@routes_bp.route("/insert_project", methods=["GET", "POST"])
 def insert_project():
     form = forms.ProjectForm()
-    return render_template("projects_form.html", form=form)
+
+    if request.method == "GET":
+        return render_template("projects_form.html", form=form)
+    elif request.method == "POST":
+        if form.validate_on_submit():
+            params = {
+                "project_name" : form.PROJECT_NAME.data,
+                "excluded" : form.EXCLUDED.data
+            }
+        return_value = send_request("ins_projects", "POST", params)
+        return return_value

@@ -65,9 +65,10 @@ def ins_projects():
         project = models.Projects(project_name=data_project_name, excluded=data_excluded)
         db.session.add(project)
         db.session.commit()
-        return get_projects()
+        return jsonify(get_projects())
     else:
-        return jsonify(f"Error: Duplicate primary key {pk_values}"), 400
+        return jsonify({"error": f"Duplicate primary key(s) for {primary_keys}"},400)
+
 
 
 def check_pk_bfr_insert(**kwargs):
