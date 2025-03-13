@@ -55,23 +55,33 @@ def ins_projects():
     data_project_name = data.get('project_name')
     data_excluded = data.get('excluded')
 
-    if check_pk_bfr_insert("project_name", data_project_name):
+    # Get primary key field names
+    primary_keys = [pk.name for pk in models.Projects.__table__.primary_key]
+
+    # Build primary key values dynamically
+    pk_values = {pk: data.get(pk) for pk in primary_keys}
+
+    if check_pk_bfr_insert(**pk_values):
         project = models.Projects(project_name=data_project_name, excluded=data_excluded)
         db.session.add(project)
         db.session.commit()
         return get_projects()
     else:
-        return jsonify(f"Error duplicate primary keys for {data_project_name}")
+        return jsonify(f"Error: Duplicate primary key {pk_values}"), 400
 
 
-def check_pk_bfr_insert(primary_key, value):
-    count = models.Projects.query.filter_by(primary_key=value).count()
-    if count!=0:
-        return True
-    return False
+def check_pk_bfr_insert(**kwargs):
+    """
+    Check if a record with given primary key values already exists.
+    :param kwargs: Dictionary of primary key values to check
+    :return: False if duplicate exists, True otherwise
+    """
+    if models.Projects.query.filter_by(**kwargs).count() > 0:
+        return False  # Duplicate found
+    return True  # No duplicate
 
 
-from sqlalchemy.orm import class_mapper
+
 @api.route('/get_pr_pk', methods=["GET"])
 def get_pr_pk():
     pks = [pk.name for pk in models.Projects.__table__.primary_key]
