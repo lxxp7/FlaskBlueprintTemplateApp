@@ -2,11 +2,10 @@ import os
 """
 Flask Configuration Production Mode.
 
-This is a Flask Configuration compatible with Celery.
+This is a Flask Configuration.
 It holds all configuration parameters for the Flask App
 
-This file is loaded by default by the createf_app() if no configuration
-is specified.
+This file is loaded by default by the create_app() if no configuration is specified.
 
 """
 # -----------------------------------------------------------------------------

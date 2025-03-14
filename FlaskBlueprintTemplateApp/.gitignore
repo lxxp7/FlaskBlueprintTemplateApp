@@ -1,4 +1,4 @@
-# Ignore Python cache files
+# Ignore Python cache files, venv and SQLite database file
 __pycache__/
 venv/
 *.db

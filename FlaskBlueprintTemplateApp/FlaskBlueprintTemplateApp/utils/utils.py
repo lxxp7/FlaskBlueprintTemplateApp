@@ -1,3 +1,5 @@
+"""Utils module containing all frquently used functions"""
+
 from FlaskBlueprintTemplateApp.utils.extensions import (
     jsonify,
     current_app,

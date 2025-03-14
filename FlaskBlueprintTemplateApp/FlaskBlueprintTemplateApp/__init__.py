@@ -2,13 +2,18 @@
 Service Main Application.
 Describe here what your service is doing.
 
-This file contains both function to initialized Flask and Celery App.
+This file contains functions to initialize Flask and Database.
 You shouldn't have to change those functions except for advance functionality.
 
 """
-from FlaskBlueprintTemplateApp.utils.extensions import Flask
+from FlaskBlueprintTemplateApp.utils.extensions import (
+    Flask,
+    SQLAlchemy,
+    os,
+    db
+)
+
 from FlaskBlueprintTemplateApp.blueprints import register_blueprints
-from FlaskBlueprintTemplateApp.utils.extensions import os, db
 
 def create_app(config_filename=None, testing=False):
     """
@@ -46,8 +51,7 @@ def create_app(config_filename=None, testing=False):
     if config_filename:
         app.config.from_pyfile(config_filename)
     else:
-       app.config.from_object('FlaskBlueprintTemplateApp.config.settings')
-
+       app.config.from_object('FlaskBlueprintTemplateApp.config.settings-dev')
 
     #: Testing mode
     #:
@@ -56,12 +60,13 @@ def create_app(config_filename=None, testing=False):
     if testing is True:
         app.config["TESTING"] = True
 
+    #Init database
     db.init_app(app)
 
+    #import models module to create the tables in the database if the file doesn't exist
     import FlaskBlueprintTemplateApp.models
     with app.app_context():
-        db.create_all()  # Assurez-vous que cet appel est dans le contexte de l'application
-
+        db.create_all()  # Make sure this call is done when in app_context
 
     #: Register Blueprints
     #:
@@ -69,11 +74,9 @@ def create_app(config_filename=None, testing=False):
     #: being at blueprints/__init__.py
     register_blueprints(app)
 
-    # import db
-    # db.init_app(app)
-
-    # Root route for the main page
+    # Root route for the main page at http://host:port/
     @app.route('/')
     def home():
-        return "Welcome to the Nightcrawler API! Use the url with '/api/version/route' ex : /api/1.0/"
+        return "Welcome to the FlaskBlueprintTemplateAPP API! Use the url with '/api/version/route' ex : /api/1.0/"
+
     return app

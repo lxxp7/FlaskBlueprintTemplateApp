@@ -1,8 +1,8 @@
 """
 Flask Configuration Dev Mode.
 
-This is a Flask Configuration compatible with Celery.
-It holds all configuration parameters for the Flask App and the Celery App.
+This is a Flask Configuration
+It holds all configuration parameters for the Flask App.
 """
 # -----------------------------------------------------------------------------
 # Flask Configuration
