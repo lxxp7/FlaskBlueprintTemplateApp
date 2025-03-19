@@ -9,9 +9,10 @@ You shouldn't have to change those functions except for advance functionality.
 from FlaskBlueprintTemplateApp.utils.extensions import (
     Flask,
     SQLAlchemy,
-    os,
-    db
+    os
 )
+
+db = SQLAlchemy()
 
 from FlaskBlueprintTemplateApp.blueprints import register_blueprints
 

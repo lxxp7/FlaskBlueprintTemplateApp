@@ -17,7 +17,7 @@ from FlaskBlueprintTemplateApp.utils.extensions import (
 #: Importing our API Blueprint
 #: All the views will be attached to our blueprint with the @api.route decorator.
 from FlaskBlueprintTemplateApp.blueprints.api.api_1_0 import api
-from FlaskBlueprintTemplateApp.utils.extensions import db
+from FlaskBlueprintTemplateApp import db
 
 @api.route('/')
 def index():
@@ -67,8 +67,7 @@ def ins_projects():
         db.session.commit()
         return jsonify(get_projects())
     else:
-        return jsonify({"error": f"Duplicate primary key(s) for {primary_keys}"},400)
-
+        return utils.return_error(f"Duplicate primary key(s) for {primary_keys}")
 
 
 def check_pk_bfr_insert(**kwargs):
@@ -84,5 +83,10 @@ def check_pk_bfr_insert(**kwargs):
 
 @api.route('/get_pr_pk', methods=["GET"])
 def get_pr_pk():
+    """Gets all the primary keys from the projects table
+
+    Returns:
+        list : the pks
+    """
     pks = [pk.name for pk in models.Projects.__table__.primary_key]
-    return jsonify(pks)
+    return utils.return_data(pks)

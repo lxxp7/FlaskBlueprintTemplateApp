@@ -31,4 +31,3 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, timedelta
 from urllib.parse import unquote
 
-db = SQLAlchemy()

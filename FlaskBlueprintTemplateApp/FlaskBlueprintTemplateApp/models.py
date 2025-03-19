@@ -1,4 +1,4 @@
-from FlaskBlueprintTemplateApp.utils.extensions import db
+from FlaskBlueprintTemplateApp import db
 """
 models.py
 
